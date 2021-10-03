@@ -1,8 +1,11 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "Game/NewHaloGameMode.h"
+
+#include "NHGameInstance.h"
 #include "GameUI/NewHaloHUD.h"
 #include "Player/NewHaloCharacter.h"
+#include "Player/NHPlayerController.h"
 #include "UObject/ConstructorHelpers.h"
 
 ANewHaloGameMode::ANewHaloGameMode()
@@ -24,6 +27,7 @@ void ANewHaloGameMode::Tick(float DeltaSeconds)
 void ANewHaloGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+	GI = Cast<UNHGameInstance>(GetGameInstance());
 }
 
 void ANewHaloGameMode::RestartPlayer(AController* NewPlayer)
@@ -34,4 +38,18 @@ void ANewHaloGameMode::RestartPlayer(AController* NewPlayer)
 void ANewHaloGameMode::HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer)
 {
 	Super::HandleStartingNewPlayer_Implementation(NewPlayer);
+	auto Player = Cast<ANHPlayerController>(NewPlayer);
+	if(!Player) return;
+	PlayerControllers.Add(Player);
+	auto PS = Player->GetPlayerState<ANHPlayerState>();
+	if(!PS)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Cant Get player state in GM!"));
+		return;
+	}
+	auto Name = PS->GetName();
+	
+	
+	
+	
 }

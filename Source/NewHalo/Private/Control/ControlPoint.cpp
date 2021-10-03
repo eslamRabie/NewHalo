@@ -6,25 +6,31 @@
 #include "Player/NewHaloCharacter.h"
 #include "Player/NHPlayerState.h"
 #include "DrawDebugHelpers.h"
+#include "Net/UnrealNetwork.h"
 #include "Components/BrushComponent.h"
 
 AControlPoint::AControlPoint()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = true;
 	BlueTeamCount = 0;
 	RedTeamCount = 0;
 	RateFactor = 0.5;
 
-	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootSceneComponent"));
-	
 	ControlPointMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ControlPointMesh"));
 	ControlPointMesh->SetupAttachment(RootComponent);
-	
-	
+}
+
+void AControlPoint::BeginPlay()
+{
+	Super::BeginPlay();
+	SetActorHiddenInGame(false);
+	RootComponent->SetHiddenInGame(true, true);
+	ControlPointMesh->SetHiddenInGame(false, true);
 	OnActorBeginOverlap.AddDynamic(this, &AControlPoint::OnOverLapBegin);
 	OnActorEndOverlap.AddDynamic(this, &AControlPoint::OnOverLapEnd);
-	
 }
+
 
 void AControlPoint::Tick(float DeltaSeconds)
 {
@@ -36,7 +42,7 @@ void AControlPoint::Tick(float DeltaSeconds)
 		if(PS)
 		{
 			FColor Color = PS->GetPlayerTeam() == ETeams::BlueTeam? FColor::Blue : FColor::Red;
-			DrawDebugLine(GetWorld(), ControlPointMesh->GetComponentLocation(), Player->GetActorLocation(),
+			DrawDebugLine(GetWorld(), GetActorLocation(), Player->GetActorLocation(),
 				Color, false, -1, 0, 2);
 		}
 	}

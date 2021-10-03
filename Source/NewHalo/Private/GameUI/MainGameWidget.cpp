@@ -3,6 +3,8 @@
 
 #include "GameUI/MainGameWidget.h"
 
+#include <string>
+
 #include "Components/Image.h"
 #include "Components/ProgressBar.h"
 #include "Components/TextBlock.h"
@@ -12,6 +14,11 @@
 
 void UMainGameWidget::UpdateHealth(float HealthPercentage)
 {
+	if(!Health)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Health error"));
+		return;
+	}
 	Health->SetPercent(HealthPercentage);
 }
 
@@ -43,19 +50,25 @@ void UMainGameWidget::SetSmallWeaponIcon(UTexture2D* Icon)
 	SmallWeaponIcon->SetBrushFromTexture(Icon);
 }
 
-void UMainGameWidget::SetWeapon1Ammo(int32 NewAmmo)
+void UMainGameWidget::SetWeapon1Ammo(FVector NewAmmo)
 {
-	Weapon1Ammo->SetText(FText::AsNumber(NewAmmo));
+	auto A =  FString::FromInt(NewAmmo.X) + " / " + FString::FromInt(NewAmmo.Y); 
+	Weapon1Ammo->SetText(FText::FromString(A));
+	Weapon1AmmoPack->SetText(FText::AsNumber(NewAmmo.Z));
 }
 
-void UMainGameWidget::SetWeapon2Ammo(int32 NewAmmo)
+void UMainGameWidget::SetWeapon2Ammo(FVector NewAmmo)
 {
-	Weapon2Ammo->SetText(FText::AsNumber(NewAmmo));
+	auto A =  FString::FromInt(NewAmmo.X) + " / " + FString::FromInt(NewAmmo.Y); 
+	Weapon2Ammo->SetText(FText::FromString(A));
+	Weapon2AmmoPack->SetText(FText::AsNumber(NewAmmo.Z));
 }
 
-void UMainGameWidget::SetSmallWeaponAmmo(int32 NewAmmo)
+void UMainGameWidget::SetSmallWeaponAmmo(FVector NewAmmo)
 {
-	SmallWeaponAmmo->SetText(FText::AsNumber(NewAmmo));
+	auto A =  FString::FromInt(NewAmmo.X) + " / " + FString::FromInt(NewAmmo.Y); 
+	SmallWeaponAmmo->SetText(FText::FromString(A));
+	SmallWeaponAmmoPack->SetText(FText::AsNumber(NewAmmo.Z));
 }
 
 void UMainGameWidget::SetControlPointTeam(ETeams Team)

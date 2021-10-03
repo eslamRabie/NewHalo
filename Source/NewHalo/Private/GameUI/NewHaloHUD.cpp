@@ -51,17 +51,17 @@ void ANewHaloHUD::SetSmallWeaponIcon(UTexture2D* Icon)
 	MainGameWidget->SetSmallWeaponIcon(Icon);
 }
 
-void ANewHaloHUD::SetWeapon1Ammo(int32 NewAmmo)
+void ANewHaloHUD::SetWeapon1Ammo(FVector NewAmmo)
 {
 	MainGameWidget->SetWeapon1Ammo(NewAmmo);
 }
 
-void ANewHaloHUD::SetWeapon2Ammo(int32 NewAmmo)
+void ANewHaloHUD::SetWeapon2Ammo(FVector NewAmmo)
 {
 	MainGameWidget->SetWeapon2Ammo(NewAmmo);
 }
 
-void ANewHaloHUD::SetSmallWeaponAmmo(int32 NewAmmo)
+void ANewHaloHUD::SetSmallWeaponAmmo(FVector NewAmmo)
 {
 	MainGameWidget->SetSmallWeaponAmmo(NewAmmo);
 }

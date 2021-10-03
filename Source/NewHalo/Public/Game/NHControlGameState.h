@@ -20,5 +20,7 @@ private:
 
 	UPROPERTY()
 	ETeams ControlTeam;
+
+	
 	
 };

@@ -3,10 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Control/ControlPoint.h"
 #include "GameFramework/GameMode.h"
 #include "NewHaloGameMode.generated.h"
 
+class UNHGameInstance;
+class ANHPlayerController;
 UCLASS(minimalapi)
 class ANewHaloGameMode : public AGameMode
 {
@@ -25,8 +26,13 @@ protected:
 
 	virtual void HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer) override;
 
-	
 
+private:
+	UPROPERTY()
+	TArray<ANHPlayerController*> PlayerControllers;
+	UPROPERTY()
+	UNHGameInstance* GI;
+	
 	
 };
 

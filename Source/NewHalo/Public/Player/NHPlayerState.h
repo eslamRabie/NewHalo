@@ -73,10 +73,15 @@ private:
 	UPROPERTY()
 	ETeams PlayerTeam;
 public:
+	UFUNCTION(BlueprintCallable)
 	float GetHealth() const;
+	UFUNCTION(BlueprintCallable)
 	float GetMaxHealth() const;
+	UFUNCTION(BlueprintCallable)
 	float GetKills() const;
+	UFUNCTION(BlueprintCallable)
 	float GetDeaths() const;
+	UFUNCTION(BlueprintCallable)
 	ETeams GetPlayerTeam() const;
 };
 

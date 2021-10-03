@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/TextBlock.h"
 #include "PlayerOverheadStatus.generated.h"
 
 class ANHPlayerState;
@@ -25,6 +26,9 @@ private:
 
 	UPROPERTY(meta=(BindWidget))
 	UProgressBar* Health;
+
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* PlayerName;
 
 	UPROPERTY()
 	ANHPlayerState* PS;

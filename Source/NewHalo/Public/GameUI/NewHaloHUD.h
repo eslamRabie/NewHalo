@@ -15,9 +15,13 @@ class ANewHaloHUD : public AHUD
 
 public:
 	ANewHaloHUD();
+
+//////////////
+///
+///
 	
 	void UpdateHealth(float HealthPercentage);
-
+	
 
 ///////////////
 ///
@@ -39,11 +43,11 @@ public:
 
 	void SetSmallWeaponIcon(UTexture2D* Icon);
 
-	void SetWeapon1Ammo(int32 NewAmmo);
+	void SetWeapon1Ammo(FVector NewAmmo);
 	
-	void SetWeapon2Ammo(int32 NewAmmo);
+	void SetWeapon2Ammo(FVector NewAmmo);
 
-	void SetSmallWeaponAmmo(int32 NewAmmo);
+	void SetSmallWeaponAmmo(FVector NewAmmo);
 
 /////////////////
 ///

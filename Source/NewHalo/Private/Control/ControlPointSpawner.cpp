@@ -11,7 +11,7 @@ AControlPointSpawner::AControlPointSpawner()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	bReplicates = true;
 }
 
 // Called when the game starts or when spawned
@@ -41,6 +41,7 @@ AControlPoint* AControlPointSpawner::SpawnControlPoint()
 		return nullptr;
 	}
 	ControlPoint = World->SpawnActor<AControlPoint>(ControlPointClass, GetActorLocation(), GetActorRotation());
+	//ControlPoint->SetActorLocationAndRotation(GetActorLocation(), GetActorRotation());
 	if(!ControlPoint)
 	{
 		return nullptr;

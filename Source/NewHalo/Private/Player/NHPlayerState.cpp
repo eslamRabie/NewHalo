@@ -16,7 +16,7 @@ ANHPlayerState::ANHPlayerState()
 void ANHPlayerState::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-	Health -= 0.1;
+	Health -= 0.5;
 }
 
 void ANHPlayerState::BeginPlay()
@@ -37,6 +37,8 @@ void ANHPlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLi
 
 void ANHPlayerState::OnRep_Health()
 {
+	
+
 	auto PC = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 	if(!PC)
 	{

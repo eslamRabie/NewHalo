@@ -25,9 +25,12 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 protected:
+
+	virtual void BeginPlay() override;
 	
+	UFUNCTION()
 	void OnOverLapBegin(AActor* ThisActor, AActor* OtherActor);
-	
+	UFUNCTION()
 	void OnOverLapEnd(AActor* ThisActor, AActor* OtherActor);
 
 private:

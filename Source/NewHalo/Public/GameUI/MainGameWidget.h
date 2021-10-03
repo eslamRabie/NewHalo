@@ -22,6 +22,7 @@ class NEWHALO_API UMainGameWidget : public UUserWidget
 public:
 
 	void UpdateHealth(float HealthPercentage);
+
 	
 	///////////////
 	///
@@ -44,11 +45,11 @@ public:
 
 	void SetSmallWeaponIcon(UTexture2D* Icon);
 
-	void SetWeapon1Ammo(int32 NewAmmo);
+	void SetWeapon1Ammo(FVector NewAmmo);
 	
-	void SetWeapon2Ammo(int32 NewAmmo);
+	void SetWeapon2Ammo(FVector NewAmmo);
 
-	void SetSmallWeaponAmmo(int32 NewAmmo);
+	void SetSmallWeaponAmmo(FVector NewAmmo);
 
 	/////////////////
 	///
@@ -86,7 +87,13 @@ private:
 	UPROPERTY(meta=(BindWidget))
 	UTextBlock* SmallWeaponAmmo;
 
-	
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* Weapon1AmmoPack;
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* Weapon2AmmoPack;
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* SmallWeaponAmmoPack;
+
 	
 	
 };
